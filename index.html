@@ -1,0 +1,68 @@
+<html>
+<style>
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #main {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    text-align: center
+  }
+
+  #main div {
+    width: 200px;
+    height: 200px;
+    margin: 0px auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
+    cursor: hand
+  }
+</style>
+
+<body>
+  <div id="main">
+    <div>
+      <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+        <defs>
+          <style /></defs><path d="M512 1024a512 512 0 1 1 512-512 512 512 0 0 1-512 512zm0-960a448 448 0 1 0 448 448A448 448 0 0 0 512 64zm-85.44 654.24C413.12 726.624 384 723.072 384 704V320c0-17.312 27.52-24.032 43.2-13.888 12.48 8.096 262.4 171.712 283.84 185.6a24.672 24.672 0 0 1 0 40.32c-15.36 10.336-266.56 174.784-284.48 186.208z" fill="#bfbfbf"/></svg>
+      </div>
+    </div>
+    <script>
+      var colors = ['#ffffff', '#FF0000', '#000000', '#0000FF', '#00FF00']
+      var main = document.getElementById('main')
+      var index = 0
+      var t = null
+      var run = null
+      var state = false
+
+      var t = setInterval(function () {
+        main.style.cursor = 'none'
+      }, 2000)
+
+      document.onmousemove = function move() {
+        clearInterval(t)
+        main.style.cursor = 'default'
+        t = setInterval(function () {
+          main.style.cursor = 'none'
+        }, 2000)
+      }
+      main.querySelector('div').onclick = function () {
+        clearInterval(run)
+        state = true
+        this.style.display = 'none'
+        run = setInterval(function () {
+          if(!state)return
+          if (index == colors.length) index = 0
+          var color = colors[index++]
+          main.style.backgroundColor = color
+        }, 3000)
+      }
+    </script>
+  </body>
+</html>
