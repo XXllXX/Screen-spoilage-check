@@ -1,2 +1,3 @@
 # Screen-spoilage-check
- 屏幕坏点检查 
+
+ 使用Html页面屏幕坏点检查 
